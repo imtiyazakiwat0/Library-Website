@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script type="module" src="/firebase/firebase-config.js"></script>
+    <script type="module" src="profile2.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .nav-bar {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .profile-section {
+            background-color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .profile-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .profile-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-section p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .profile-section form {
+            text-align: left;
+        }
+
+        .profile-section form label {
+            font-weight: bold;
+        }
+
+        .profile-section form input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile-section form button {
+            background-color: #007bff;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .profile-section form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <a href="/index.html">&#8592; Back</a>
+        <button id="changeEmailButton" class="bg-red-500 text-white font-bold py-2 px-4 rounded-full"
+            onclick="changeEmail()">Change Email</button>
+    </div>
+
+    <section class="profile-section">
+        <h1 class="text-4xl font-bold mb-4">Profile</h1>
+        <div id="profileContainer">
+            <img id="profilePicture" src="/img/default-profile.jpg" alt="Profile Picture">
+            <h2 id="displayName" class="mb-2">User's Name</h2>
+            <p id="displayEmail" class="text-gray-600 mb-4">user@example.com</p>
+            <form id="profileForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="mb-2">
+                <label for="profilePictureInput">Profile Picture:</label>
+                <input type="file" id="profilePictureInput" name="profilePicture" accept="image/*" class="mb-4">
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+        <div id="loadingSpinner" class="hidden mt-4">
+            <img src="/img/loading-spinner.gif" alt="Loading Spinner" width="50" height="50">
+        </div>
+    </section>
+</body>
+
+</html>

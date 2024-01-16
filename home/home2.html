@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Fantastic Homepage</title>
+    <!-- Include Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="firebase//firebase/firebase-config.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold">My Awesome Website</a>
+            <div id="userStatus" class="text-white hidden">
+                <!-- Logout button and message -->
+                <span id="logoutMessage"></span>
+                <button id="logoutButton" class="text-blue-200 hover:underline ml-2 cursor-pointer">Logout</button>
+            </div>
+            <button id="signInBtn" class="text-white hover:underline cursor-pointer">Sign In</button>
+        </div>
+    </nav>
+
+    <!-- Modal HTML -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Please Sign In</h2>
+            <!-- Add your login form here -->
+            <!-- For simplicity, let's include a link to the login page -->
+            <a href="login" class="text-blue-500 hover:underline">Sign In</a>
+        </div>
+    </div>
+
+    <!-- ... other HTML code ... -->
+
+    <!-- JavaScript for the Get Started button redirection -->
+    <!-- JavaScript for the Get Started button redirection -->
+    <script>
+        // Check if the user is logged in (you need to implement this logic)
+        // const userIsLoggedIn = /* Your logic to check if the user is logged in */;
+
+        // Get a reference to the "Sign In" button and the user status div
+        const signInButton = document.getElementById("signInBtn");
+        const userStatus = document.getElementById("userStatus");
+
+        // Get a reference to the logout button and message
+        const logoutButton = document.getElementById("logoutButton");
+        const logoutMessage = document.getElementById("logoutMessage");
+
+        // Get a reference to the modal
+        const loginModal = document.getElementById("loginModal");
+
+        // Function to display the login modal
+        function displayLoginModal() {
+            loginModal.style.display = "block";
+        }
+
+        // Function to hide the login modal
+        function hideLoginModal() {
+            loginModal.style.display = "none";
+        }
+
+        // Event listener for the "Sign In" button
+        signInButton.addEventListener("click", function () {
+            displayLoginModal();
+        });
+
+        // Event listener for the logout button
+        logoutButton.addEventListener("click", function () {
+            // Perform logout action here (e.g., sign out the user)
+            // Redirect to the login page after logout (replace "login" with your actual login page URL)
+            // For example, using Firebase Authentication:
+            firebase.auth().signOut().then(function () {
+                // Display the logout message and hide the logout button
+                logoutMessage.textContent = "User has logged out successfully.";
+                logoutButton.style.display = "none";
+            }).catch(function (error) {
+                console.error("Logout error: " + error);
+            });
+        });
+
+        // Check if the user is logged in and show/hide elements accordingly
+        if (userIsLoggedIn) {
+            signInButton.style.display = "none"; // Hide the "Sign In" button
+            userStatus.style.display = "flex"; // Show the user status div
+        } else {
+            // User is not logged in, so show the login modal
+            displayLoginModal();
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.addEventListener("click", function (event) {
+            if (event.target === loginModal) {
+                hideLoginModal();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

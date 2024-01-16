@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+  <style>
+    body {
+      background-image: url('img/registration-background-img.png'); /* Replace 'your-background-image.jpg' with the path to your background image */
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body class="bg-gray-200">
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <h1 class="text-3xl font-semibold mb-6">Sign Up Now</h1>
+      <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec eros ac quam semper luctus.</p>
+      <form action="register" method="post">
+        <div class="mb-4">
+          <label for="firstname" class="block text-gray-700">First Name</label>
+          <input type="text" name="firstname" id="firstname" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+        </div>
+        <div class="mb-4">
+          <label for="lastname" class="block text-gray-700">Last Name</label>
+          <input type="text" name="lastname" id="lastname" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700">Email</label>
+          <input type="email" name="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+        </div>
+        <div class="mb-4">
+          <label for="contactnumber" class="block text-gray-700">Contact Number</label>
+          <input type="number" name="contactnumber" id="contactnumber" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+        </div>
+        <div class="mb-4">
+          <input type="submit" value="Sign Up" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <!-- Include Firebase SDK and Firebase UI scripts -->
+    <!-- For example: -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script type="module" src="/firebase/firebase-config.js"></script>
+    <script type="module" src="profile.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <!-- Include a navigation bar if needed -->
+    <nav class="bg-gray-900 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Back arrow button to go back to index page -->
+            <a href="/index.html" class="text-xl font-semibold"><span>&#8592;</span> Back</a>
+            <!-- Add a button to change email -->
+            <button id="changeEmailButton" class="bg-red-500 text-white font-bold py-2 px-4 rounded-full"
+                onclick="changeEmail()">Change Email</button>
+        </div>
+    </nav>
+    <!-- Profile Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-4">Profile</h1>
+            <div id="profileContainer">
+                <!-- Display user's profile picture if available -->
+                <img id="profilePicture" src="/img/default-profile.jpg" alt="Profile Picture"
+                    class="rounded-full mx-auto mb-4 max-w-md" width="200" height="200">
+                <!-- Display user's name and email -->
+                <h2 id="displayName" class="text-2xl font-semibold mb-2">User's Name</h2>
+                <p id="displayEmail" class="text-gray-600 mb-4">user@example.com</p>
+                <!-- Editable fields for name and email -->
+                <form id="profileForm" class="text-left">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="mb-2">
+                    <!-- <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="mb-4" required>
+                    File input for profile picture -->
+                    <label for="profilePictureInput">Profile Picture:</label>
+                    <input type="file" id="profilePictureInput" name="profilePicture" accept="image/*" class="mb-4">
+
+                    <!-- Save button -->
+                    <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Save
+                        Changes</button>
+                </form>
+            </div>
+        </div>
+        <!-- Add a loading spinner -->
+        <div id="loadingSpinner" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <img src="/img/loading-spinner.gif" alt="Loading Spinner">
+        </div>
+        <style>
+            /* Style for the loading spinner */
+            #loadingSpinner {
+                width: 50px;
+                height: 50px;
+            }
+        </style>
+    </section>
+
+    <!-- Add your JavaScript code here to populate and update the profile data -->
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+    <style>
+        body {
+            background-image: url('img/registration-background-img.png');
+            /* Replace 'your-background-image.jpg' with the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200">
+    <h1 class="text-2xl text-center py-4">Register for Library Access</h1>
+    <div class="container mx-auto p-4 bg-white shadow-lg rounded-lg max-w-md">
+        <form class="space-y-4" id="registration-form">
+            <div class="flex flex-col">
+                <label for="name" class="mb-1">Name:</label>
+                <input type="text" id="name" name="name" required
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="username" class="mb-1">Username:</label>
+                <input type="text" id="username" name="username" required
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="email" class="mb-1">Email:</label>
+                <input type="email" id="email" name="email" required
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="mobile" class="mb-1">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" required
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="village" class="mb-1">Village:</label>
+                <input type="text" id="village" name="village" required
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="age" class="mb-1">Age:</label>
+                <input type="number" id="age" name="age" required
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div id="loadingSpinner"
+                class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <img src="/img/loading-spinner.gif" alt="Loading Spinner">
+            </div>
+            <div class="flex flex-col">
+                <label for="password" class="mb-1">Password:</label>
+                <input type="password" id="password" name="password" required
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+
+            <button type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer">Register</button>
+        </form>
+        <p class="text-red-500 mt-4" id="error-message"></p>
+        <p class="text-center mt-2">Already have an account? <a href="login/" class="text-blue-500 hover:underline">Log
+                in here</a>.</p>
+    </div>
+
+    <script src="/firebase/firebase-config.js"></script>
+    <script src="registration.js"></script>
+</body>
+
+</html>
